@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoWebAPI", "ToDoWebAPI\ToDoWebAPI.csproj", "{7948F3FD-690B-4F34-9283-A5F522BE1B55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoWebAPI", "ToDoWebAPI\ToDoWebAPI.csproj", "{7948F3FD-690B-4F34-9283-A5F522BE1B55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTestProject", "XUnitTestProject\XUnitTestProject.csproj", "{DAA07A16-4AEC-44E9-9AB0-11A413CC25A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{7948F3FD-690B-4F34-9283-A5F522BE1B55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7948F3FD-690B-4F34-9283-A5F522BE1B55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7948F3FD-690B-4F34-9283-A5F522BE1B55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAA07A16-4AEC-44E9-9AB0-11A413CC25A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAA07A16-4AEC-44E9-9AB0-11A413CC25A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAA07A16-4AEC-44E9-9AB0-11A413CC25A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAA07A16-4AEC-44E9-9AB0-11A413CC25A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
