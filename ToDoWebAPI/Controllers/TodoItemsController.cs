@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ToDoWebAPI.Models;
 using ToDoWebAPI.Services;
+using Microsoft.AspNetCore.Mvc.Abstractions;
 
 namespace ToDoWebAPI.Controllers
 {
@@ -23,14 +24,14 @@ namespace ToDoWebAPI.Controllers
 
         // GET: api/TodoItems
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TodoItem>>> GetTodoItems()
+        public IActionResult GetTodoItems()
         {
-            return TodoService.GetTodoItems();
+            return Ok(TodoService.GetTodoItems());
         }
 
         // GET: api/TodoItems/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<TodoItem>> GetTodoItem(long id)
+        public IActionResult GetTodoItem(long id)
         {
             var todoItem = TodoService.GetTodoItem(id);
 
@@ -39,30 +40,30 @@ namespace ToDoWebAPI.Controllers
                 return NotFound();
             }
 
-            return todoItem;
+            return Ok(todoItem);
         }
 
         // PUT: api/TodoItems/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTodoItem(long id, TodoItem todoItem)
+        public IActionResult PutTodoItem(long id, TodoItem todoItem)
         {
             if (id != todoItem.Id)
             {
                 return BadRequest();
             } 
             
-            TodoService.Update(todoItem);
+            var updatedItem = TodoService.Update(todoItem);
             
-            return NoContent();
+            return Ok(updatedItem);
         }
 
         // POST: api/TodoItems
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<TodoItem>> PostTodoItem(TodoItem todoItem)
+        public IActionResult PostTodoItem(TodoItem todoItem)
         {
             TodoService.Add(todoItem);
             
@@ -71,7 +72,7 @@ namespace ToDoWebAPI.Controllers
 
         // DELETE: api/TodoItems/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<TodoItem>> DeleteTodoItem(long id)
+        public IActionResult DeleteTodoItem(long id)
         {
             var todoItem = TodoService.GetTodoItem(id);
             if (todoItem == null)
@@ -81,7 +82,7 @@ namespace ToDoWebAPI.Controllers
 
             TodoService.Delete(id);
 
-            return todoItem;
+            return Ok(todoItem);
         }
     }
 }

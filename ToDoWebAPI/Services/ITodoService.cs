@@ -11,7 +11,8 @@ namespace ToDoWebAPI.Services
         List<TodoItem> GetTodoItems();
         TodoItem GetTodoItem(long id);
         void Add(TodoItem todoItem);
-        void Update(TodoItem todoItem);
+        TodoItem Update(TodoItem todoItem);
         void Delete(long id);
+        void SeedFakeData();
     }
 }

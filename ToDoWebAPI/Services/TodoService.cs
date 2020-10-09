@@ -10,7 +10,7 @@ namespace ToDoWebAPI.Services
 {
     public class TodoService : ITodoService
     {
-        private ApplicationDbContext DbContext = null;
+        protected ApplicationDbContext DbContext = null;
         public TodoService(ApplicationDbContext dbContext)
         {
             DbContext = dbContext;
@@ -38,10 +38,19 @@ namespace ToDoWebAPI.Services
         {
             return DbContext.TodoItems.ToList();
         }
-
-        public void Update(TodoItem todoItem)
+        
+        public TodoItem Update(TodoItem todoItem)
         {
-            DbContext.TodoItems.Update(todoItem);
+            var item = DbContext.TodoItems.SingleOrDefault(x => x.Id == todoItem.Id);
+            item.Name = todoItem.Name;
+            item.IsComplete = todoItem.IsComplete;
+            DbContext.SaveChanges();
+            return item;
         }
+        virtual public void SeedFakeData()
+        {
+            throw new NotImplementedException(); // not implemented for DB
+        }
+
     }
 }
